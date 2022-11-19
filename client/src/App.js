@@ -1,24 +1,24 @@
+import React from 'react';
+import Header from './components/header/Header';
+import SimpleMap from './components/map/SimpleMap';
+import Dashboard from './components/dashboard/Dashboard';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>Look at our cool website!</p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <div style={{ display: 'flex', flexDirection: 'row', height: '80%' }}>
+        <div className='centered-flex'>
+          <SimpleMap />
+        </div>
+        <div style={{ marginLeft: '3rem' }}>
+          <h1>DashBoard</h1>
+          <Dashboard />
+        </div>
+      </div>
+    </>
   );
-}
+};
 
 export default App;
