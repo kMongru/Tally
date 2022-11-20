@@ -14,6 +14,10 @@ const Wrapper = styled.main`
 `;
 
 const SimpleMap = () => {
+  const locations = [[43.01885, -81.21563]];
+
+  // const handleApiLoaded = (map, maps) => {};
+
   return (
     <>
       <Paper elevation={10}>
@@ -28,14 +32,14 @@ const SimpleMap = () => {
             }}
             defaultZoom={12}
             defaultCenter={[42.984924, -81.245277]}
+            // yesIWantToUseGoogleMapApiInternals
+            // onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
           >
-            <Marker
-              key={'test'}
-              text={'walmart'}
-              lat={43.01885}
-              lng={-81.21563}
-              onClick={console.log('clicked')}
-            />
+            <Marker lat={42.01885} lng={-80.21563} />;
+            {/* {locations &&
+              locations.map((loc) => {
+                
+              })} */}
           </GoogleMapReact>
         </Wrapper>
       </Paper>

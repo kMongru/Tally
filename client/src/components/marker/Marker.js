@@ -1,40 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import LocationContext from '../../context/location_context';
 import PropTypes from 'prop-types';
-// import styled from 'styled-components';
 
-// const Wrapper = styled.div`
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   width: 18px;
-//   height: 18px;
-//   background-color: #000;
-//   border: 2px solid #fff;
-//   border-radius: 100%;
-//   user-select: none;
-//   transform: translate(-50%, -50%);
-//   &:hover {
-//     z-index: 2;
-//     background-color: blue;
-//   }
-// `;
+import './marker.css';
 
-const Marker = ({ onClick }) => {
+const Marker = () => {
+  const [isSelected, setSelected] = useState(false);
+  const { lat, setLat, lng, setLng } = useContext(LocationContext);
+
+  useEffect(() => {
+    if (isSelected) {
+      setLat(2);
+      setLng(2);
+    }
+  }, [isSelected]);
+
   return (
     <>
-      <div onClick={console.log('hi')}></div>
+      <div className='marker'>
+        <button
+          onClick={() => {
+            setSelected(true);
+          }}
+        >
+          Select
+        </button>
+      </div>
       {/* <Wrapper alt={text} onClick={console.log('clicked')} /> */}
     </>
   );
 };
 
-Marker.defaultProps = {
-  onClick: null,
-};
+// Marker.defaultProps = {
+//   onClick: null,
+// };
 
-Marker.propTypes = {
-  onClick: PropTypes.func,
-  text: PropTypes.string.isRequired,
-};
+// Marker.propTypes = {
+//   onClick: PropTypes.func,
+//   text: PropTypes.string.isRequired,
+// };
 
 export default Marker;
