@@ -1,21 +1,24 @@
 const mysql = require('mysql');
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const router = express.Router();
 
-let con = null
+app.use(cors());
+
+let con = null;
 
 const createCon = async () => {
-    con = await mysql.createConnection({
-        host: "hack-western-9.chu7zm5ttrq2.us-east-1.rds.amazonaws.com",
-        user: "admin",
-        password: "hackwestern",
-        port: 3306,
-        database: "locationData"
-    });
-}
+  con = await mysql.createConnection({
+    host: 'hack-western-9.chu7zm5ttrq2.us-east-1.rds.amazonaws.com',
+    user: 'admin',
+    password: 'hackwestern',
+    port: 3306,
+    database: 'locationData',
+  });
+};
 
-if (con == null) createCon()
+if (con == null) createCon();
 
 app.use(express.json());
 
@@ -125,7 +128,4 @@ app.get('/search/', (req, res) => {
   })
 })
 
-app.listen(3001, () =>
-  console.log(`Example app listening on port 3001!`),
-);
-
+app.listen(3001, () => console.log(`Example app listening on port 3001!`));
