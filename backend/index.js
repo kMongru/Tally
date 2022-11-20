@@ -1,7 +1,10 @@
 const mysql = require('mysql2/promise');
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const router = express.Router();
+
+app.use(cors());
 
 let con = null;
 

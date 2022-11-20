@@ -5,6 +5,7 @@ import Marker from '../marker/Marker';
 import { Paper } from '@mui/material';
 
 import map_style from './GoogleMapStyles.json';
+import locationsJSON from './LatLngs.json';
 
 const Wrapper = styled.main`
   width: 40vw;
@@ -15,11 +16,13 @@ const Wrapper = styled.main`
 
 const SimpleMap = ({ locations }) => {
   const [isLoaded, setLoaded] = useState(false);
-  const [locationsArr, setLocationArr] = useState(locations);
+  // const [locationsArr, setLocationArr] = useState([]);
 
   // location array to population the markers
   useEffect(() => {
     setLoaded(true);
+    // console.log(locations);
+    // setLocationArr(locations);
   }, []);
 
   return (
@@ -34,13 +37,13 @@ const SimpleMap = ({ locations }) => {
               key: 'AIzaSyB62YTqTIneDFPQVFNuj3mvamwXNajD1wI',
               libraries: ['visualization'],
             }}
-            defaultZoom={12}
-            defaultCenter={[42.984924, -81.245277]}
+            defaultZoom={15}
+            defaultCenter={[43.005844, -81.276375]}
           >
             {isLoaded
-              ? locationsArr &&
-                locationsArr.map((location) => (
+              ? locationsJSON.map((location, i) => (
                   <Marker
+                    key={i}
                     lat={location.lat}
                     lng={location.lon}
                     prop_lat={location.lat}

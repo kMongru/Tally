@@ -6,6 +6,8 @@ import './App.css';
 import LocationContext from './context/location_context';
 import axios from 'axios';
 
+const base_url = 'http://localhost:3001';
+
 const App = () => {
   const [lat, setLat] = useState();
   const [lng, setLng] = useState();
@@ -14,6 +16,12 @@ const App = () => {
   const value = { lat, setLat, lng, setLng };
 
   useEffect(() => {
+    // fetch('http://localhost:3001/locations')
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     setMarkerLocations(res);
+    //   });
+
     populateMarkers();
   }, []);
 
@@ -24,12 +32,13 @@ const App = () => {
   }, [lat]);
 
   const populateMarkers = async () => {
-    const res = await axios.get('/locations');
+    const res = await axios.get(`${base_url}/locations`);
+    console.log(res.data);
     setMarkerLocations(res.data);
   };
 
   const fetchLocationData = async () => {
-    const res = await axios.get('/search');
+    const res = await axios.get(`${base_url}/search`);
     setLocationDetails(res.data);
   };
 
@@ -39,7 +48,7 @@ const App = () => {
         <Header />
         <div style={{ display: 'flex', flexDirection: 'row', height: '80%' }}>
           <div className='centered-flex'>
-            <SimpleMap locations={markerLocations} />
+            {markerLocations && <SimpleMap locations={markerLocations} />}
           </div>
           <div style={{ marginLeft: '3rem' }}>
             <h1>DashBoard</h1>
