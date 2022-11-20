@@ -1,25 +1,19 @@
-import React from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import Grid from '@mui/material/Grid'; // Grid version 1
 import Item from '@mui/material/ListItem';
+import LocationContext from '../../context/location_context';
 
 const Dashboard = () => {
+  const context = useContext(LocationContext);
+
+  // const [lat, setLat] = useState(null);
+  // const [lng, setLng] = useState(null);
+
   return (
     <div>
       Dashboard
-      <Grid container spacing={2}>
-        <Grid xs={8}>
-          <Item>xs=8</Item>
-        </Grid>
-        <Grid xs={4}>
-          <Item>xs=4</Item>
-        </Grid>
-        <Grid xs={4}>
-          <Item>xs=4</Item>
-        </Grid>
-        <Grid xs={8}>
-          <Item>xs=8</Item>
-        </Grid>
-      </Grid>
+      <h1>{context.lat}</h1>
+      <h1>{context.lng}</h1>
     </div>
   );
 };

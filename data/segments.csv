@@ -1,0 +1,11 @@
+DeptID,Name,Description,Sales Percentage
+1,Dairy,N/A,17%
+2,Apparel,Incl. home jewlery and baby,6%
+3,Miscellaneous,Incl. home & office cards seasonal,
+4,Home,N/A,4%
+5,Pharmacy & Beauty,Incl. pharamacy health & beauty seasonal,6%
+6,General Toys,"Incl. auto care sporting goods, ",4%
+7,Lawn & Garden,,6%
+8,Electronics,,8%
+9,Grocery,,35%
+10,Bakery/Deli,,14%

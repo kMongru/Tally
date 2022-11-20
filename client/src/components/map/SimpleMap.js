@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import GoogleMapReact from 'google-map-react';
 import Marker from '../marker/Marker';
@@ -14,6 +14,15 @@ const Wrapper = styled.main`
 `;
 
 const SimpleMap = () => {
+  const locations = [[43.01885, -81.21563]];
+  const [isLoaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
+
+  const handleApiLoaded = (map, maps) => {};
+
   return (
     <>
       <Paper elevation={10}>
@@ -28,14 +37,10 @@ const SimpleMap = () => {
             }}
             defaultZoom={12}
             defaultCenter={[42.984924, -81.245277]}
+            // yesIWantToUseGoogleMapApiInternals
+            // onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
           >
-            <Marker
-              key={'test'}
-              text={'walmart'}
-              lat={43.01885}
-              lng={-81.21563}
-              onClick={console.log('clicked')}
-            />
+            {isLoaded ? <Marker lat={42.984924} lng={-81.245277} /> : null}
           </GoogleMapReact>
         </Wrapper>
       </Paper>
