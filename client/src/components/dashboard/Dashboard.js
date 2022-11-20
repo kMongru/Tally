@@ -1,10 +1,11 @@
 import React, { useEffect, useContext, useState } from 'react';
-import Grid from '@mui/material/Grid'; // Grid version 1
-import Item from '@mui/material/ListItem';
 import LocationContext from '../../context/location_context';
+import DotsMobileStepper from '../stepper/Stepper';
+import LocationCard from '../card/LocationCard';
 
 const Dashboard = ({ details }) => {
   const context = useContext(LocationContext);
+  const [activeStep, setActiveStep] = useState(0);
 
   // const temp = {
   //   name: "Amit Chakma Engineering Building (ACEB)",
@@ -68,13 +69,15 @@ const Dashboard = ({ details }) => {
 
   return (
     <>
-      <div>Dashboard</div>
+      <h1>{details.name}</h1>
+      <h1>{details.address}</h1>
+      <LocationCard cardDetails={details.parts[activeStep]} />
+      <DotsMobileStepper
+        activeStep={activeStep}
+        setActiveStep={setActiveStep}
+        size={details.parts ? details.parts.length : 0}
+      />
     </>
-    //   {{context.lat} === null? <div></div>: <div>
-    //   Dashboard
-    //   <h1>{context.lat}</h1>
-    //   <h1>{context.lng}</h1>
-    // </div> }
   );
 };
 

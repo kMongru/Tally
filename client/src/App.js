@@ -16,12 +16,6 @@ const App = () => {
   const value = { lat, setLat, lng, setLng };
 
   useEffect(() => {
-    // fetch('http://localhost:3001/locations')
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     setMarkerLocations(res);
-    //   });
-
     populateMarkers();
   }, []);
 
