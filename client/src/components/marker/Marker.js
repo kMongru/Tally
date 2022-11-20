@@ -17,16 +17,12 @@ const Marker = () => {
 
   return (
     <>
-      <div className='marker'>
-        <button
-          onClick={() => {
-            setSelected(true);
-          }}
-        >
-          Select
-        </button>
-      </div>
-      {/* <Wrapper alt={text} onClick={console.log('clicked')} /> */}
+      <div
+        className='marker'
+        onClick={() => {
+          setSelected(true);
+        }}
+      ></div>
     </>
   );
 };

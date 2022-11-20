@@ -4,6 +4,7 @@ import SimpleMap from './components/map/SimpleMap';
 import Dashboard from './components/dashboard/Dashboard';
 import './App.css';
 import LocationContext from './context/location_context';
+import { selectAll } from './database/dbCollection';
 
 const App = () => {
   const [lat, setLat] = useState(1);
