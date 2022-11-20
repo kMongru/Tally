@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
 import LocationContext from '../../context/location_context';
-import PropTypes from 'prop-types';
 
 import './marker.css';
 
-const Marker = () => {
+const Marker = ({ lat, lng }) => {
   const [isSelected, setSelected] = useState(false);
   const { lat, setLat, lng, setLng } = useContext(LocationContext);
 
   useEffect(() => {
     if (isSelected) {
-      setLat(2);
-      setLng(2);
+      setLat(lat);
+      setLng(lng);
     }
   }, [isSelected]);
 
@@ -26,14 +25,5 @@ const Marker = () => {
     </>
   );
 };
-
-// Marker.defaultProps = {
-//   onClick: null,
-// };
-
-// Marker.propTypes = {
-//   onClick: PropTypes.func,
-//   text: PropTypes.string.isRequired,
-// };
 
 export default Marker;
