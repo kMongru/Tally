@@ -1,4 +1,4 @@
-import { react, useState }from 'react';
+import { react, useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -15,12 +15,17 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import Building from './components/card/Building'
+import Building from './components/card/LocationCard';
 
 function Copyright(props) {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      Created with love by 
+    <Typography
+      variant='body2'
+      color='text.secondary'
+      align='center'
+      {...props}
+    >
+      Created with love by
     </Typography>
   );
 }
@@ -28,66 +33,68 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-  const [type, setType] = useState(0)
-  const handleChange = (val) => { setType(val) }
+  const [type, setType] = useState(0);
+  const handleChange = (val) => {
+    setType(val);
+  };
 
   const temp = {
-    name: "Amit Chakma Engineering Building (ACEB)",
-    address: "Medway, 1151 Richmond St, London, ON N6A 3K7",
-    lat: "43.0039237",
-    lon: "-81.2763313",
-    picture: "https://perkinswill.com/wp-content/uploads/2020/04/AmitChakma_I_LisaLogan_M23.jpg",
+    name: 'Amit Chakma Engineering Building (ACEB)',
+    addr: 'Medway, 1151 Richmond St, London, ON N6A 3K7',
+    lat: '43.0039237',
+    lon: '-81.2763313',
+    picture:
+      'https://perkinswill.com/wp-content/uploads/2020/04/AmitChakma_I_LisaLogan_M23.jpg',
 
     parts: [
       {
         id: 1,
-        name: "Second Floor",
+        name: 'Second Floor',
         capacity: 70,
         picture: null,
-        description: "Second Floor study area",
+        description: 'Second Floor study area',
         counter: {
           count: 60,
-          update: "2022-11-18  7:17:19 AM"
+          update: '2022-11-18  7:17:19 AM',
         },
         tags: [
           {
-            title: "Loud",
-            icon: "Campaign",
-            color: "#9c27b0"
+            title: 'Loud',
+            icon: 'Campaign',
+            color: '#9c27b0',
           },
           {
-            title: "Study",
-            icon: "LibraryBooks",
-            color: "#f44336"
-          }
-        ]
+            title: 'Study',
+            icon: 'LibraryBooks',
+            color: '#f44336',
+          },
+        ],
       },
       {
         id: 2,
-        name: "Third Floor",
+        name: 'Third Floor',
         capacity: 50,
         picture: null,
-        description: "Third Floor study area",
+        description: 'Third Floor study area',
         tags: [
           {
-            title: "Whispers",
-            icon: "VolumeUp",
-            color: "#673ab7"
+            title: 'Whispers',
+            icon: 'VolumeUp',
+            color: '#673ab7',
           },
           {
-            title: "Study",
-            icon: "LibraryBooks",
-            color: "#f44336"
-          }
-        ]
-      }
-    ]
-  }
-
+            title: 'Study',
+            icon: 'LibraryBooks',
+            color: '#f44336',
+          },
+        ],
+      },
+    ],
+  };
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" minWidth="md" maxWidth="lg">
+      <Container component='main' minWidth='md' maxWidth='lg'>
         <CssBaseline />
         <Box
           sx={{
@@ -97,26 +104,26 @@ export default function SignUp() {
             alignItems: 'center',
           }}
         >
-          <Typography component="h1" variant="h5">
+          <Typography component='h1' variant='h5'>
             Search for Buildings
           </Typography>
-          <Box component="form" noValidate sx={{ mt: 3 }}>
+          <Box component='form' noValidate sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item md={12}>
                 <TextField
                   fullWidth
-                  id="Building Name or Keywords..."
-                  label="Building Name or Keywords..."
-                  name="lastName"
-                  autoComplete="location"
+                  id='Building Name or Keywords...'
+                  label='Building Name or Keywords...'
+                  name='lastName'
+                  autoComplete='location'
                 />
               </Grid>
               <Grid item md={12}>
                 <Select
-                  labelId="type"
-                  id="type"
+                  labelId='type'
+                  id='type'
                   value={type}
-                  label="Type"
+                  label='Type'
                   onChange={handleChange}
                   fullWidth
                 >
@@ -132,9 +139,9 @@ export default function SignUp() {
                 </Select>
               </Grid>
               <Button
-                type="submit"
+                type='submit'
                 fullWidth
-                variant="contained"
+                variant='contained'
                 sx={{ mt: 3, mb: 2 }}
               >
                 Filter

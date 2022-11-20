@@ -16,20 +16,18 @@ const App = () => {
   const value = { lat, setLat, lng, setLng };
 
   useEffect(() => {
-    // fetch('http://localhost:3001/locations')
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     setMarkerLocations(res);
-    //   });
-
     populateMarkers();
   }, []);
 
-  useEffect(() => {
-    if (lat !== null) {
-      fetchLocationData();
-    }
-  }, [lat]);
+  // useEffect(() => {
+  //   if (lat !== null) {
+  //     axios
+  //       .get(`${base_url}/search`, {
+  //         params: { lat: lat, lon: lng },
+  //       })
+  //       .then((response) => setLocationDetails(response.data));
+  //   }
+  // }, [lat]);
 
   const populateMarkers = async () => {
     const res = await axios.get(`${base_url}/locations`);
@@ -37,10 +35,12 @@ const App = () => {
     setMarkerLocations(res.data);
   };
 
-  const fetchLocationData = async () => {
-    const res = await axios.get(`${base_url}/search`);
-    setLocationDetails(res.data);
-  };
+  // const fetchLocationData = async () => {
+  //   const res = await axios.get(`${base_url}/search`, {
+  //     params: { lat: lat, lon: lng },
+  //   });
+  //   setLocationDetails(res.data);
+  // };
 
   return (
     <>
@@ -50,9 +50,12 @@ const App = () => {
           <div className='centered-flex'>
             {markerLocations && <SimpleMap locations={markerLocations} />}
           </div>
-          <div style={{ marginLeft: '3rem' }}>
-            <h1>DashBoard</h1>
-            <Dashboard details={locationDetails} />
+          <div
+            style={{
+              marginLeft: '3rem',
+            }}
+          >
+            <Dashboard />
           </div>
         </div>
       </LocationContext.Provider>

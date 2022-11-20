@@ -1,0 +1,13 @@
+.zone_container {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  width: 90%;
+  height: 40vh;
+  padding: 1rem;
+}
+
+.card-name {
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+
+}
