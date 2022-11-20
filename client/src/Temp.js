@@ -40,7 +40,7 @@ export default function SignUp() {
 
   const temp = {
     name: 'Amit Chakma Engineering Building (ACEB)',
-    address: 'Medway, 1151 Richmond St, London, ON N6A 3K7',
+    addr: 'Medway, 1151 Richmond St, London, ON N6A 3K7',
     lat: '43.0039237',
     lon: '-81.2763313',
     picture:

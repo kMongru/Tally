@@ -38,7 +38,7 @@ const SimpleMap = ({ locations }) => {
               libraries: ['visualization'],
             }}
             defaultZoom={15}
-            defaultCenter={[43.005844, -81.276375]}
+            defaultCenter={[43.003926, -81.276771]}
           >
             {isLoaded
               ? locationsJSON.map((location, i) => (

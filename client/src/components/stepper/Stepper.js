@@ -22,7 +22,7 @@ export default function DotsMobileStepper({ activeStep, setActiveStep, size }) {
       steps={size}
       position='static'
       activeStep={activeStep}
-      sx={{ maxWidth: 400, flexGrow: 1 }}
+      sx={{ maxWidth: 400, flexGrow: 1, background: '#fffef2' }}
       nextButton={
         <Button
           size='small'

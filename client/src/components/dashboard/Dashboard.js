@@ -2,81 +2,67 @@ import React, { useEffect, useContext, useState } from 'react';
 import LocationContext from '../../context/location_context';
 import DotsMobileStepper from '../stepper/Stepper';
 import LocationCard from '../card/LocationCard';
+import axios from 'axios';
 
-const Dashboard = ({ details }) => {
-  const context = useContext(LocationContext);
+import './dashboard.css';
+
+const base_url = 'http://localhost:3001';
+
+const Dashboard = () => {
+  const { lat, lng } = useContext(LocationContext);
   const [activeStep, setActiveStep] = useState(0);
+  const [details, setDetails] = useState({});
+  const [loading, setLoading] = useState(true);
 
-  // const temp = {
-  //   name: "Amit Chakma Engineering Building (ACEB)",
-  //   address: "Medway, 1151 Richmond St, London, ON N6A 3K7",
-  //   lat: "43.0039237",
-  //   lon: "-81.2763313",
-  //   picture: "https://perkinswill.com/wp-content/uploads/2020/04/AmitChakma_I_LisaLogan_M23.jpg",
+  useEffect(() => {
+    if (lat != null) {
+      console.log(lat + ',' + lng);
+      axios
+        .get(`${base_url}/search`, {
+          params: { lat: lat, lon: lng },
+        })
+        .then((data) => {
+          console.log(data);
+          setDetails(data?.data);
+          setLoading(false);
+        });
+    }
+  }, [lat]);
 
-  //   parts: [
-  //     {
-  //       id: 1,
-  //       name: "Second Floor",
-  //       capacity: 70,
-  //       picture: null,
-  //       description: "Second Floor study area",
-  //       counter: {
-  //         count: 60,
-  //         update: "2022-11-18  7:17:19 AM"
-  //       },
-  //       tags: [
-  //         {
-  //           title: "Loud",
-  //           icon: "Campaign",
-  //           color: "#9c27b0"
-  //         },
-  //         {
-  //           title: "Study",
-  //           icon: "LibraryBooks",
-  //           color: "#f44336"
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       id: 2,
-  //       name: "Third Floor",
-  //       capacity: 50,
-  //       picture: null,
-  //       description: "Third Floor study area",
-  //       tags: [
-  //         {
-  //           title: "Whispers",
-  //           icon: "VolumeUp",
-  //           color: "#673ab7"
-  //         },
-  //         {
-  //           title: "Study",
-  //           icon: "LibraryBooks",
-  //           color: "#f44336"
-  //         }
-  //       ]
-  //     }
-  //   ]
-  // }
-  if (context.lat == null) {
+  if (lat == null) {
     return (
-      <div>
-        <h1>Please Select A Building</h1>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100%',
+        }}
+      >
+        <h2>
+          Welcome to <strong>Tally!</strong> <br /> Please select a building to
+          view availability
+        </h2>
       </div>
     );
   }
 
   return (
     <>
-      <h1>{details.name}</h1>
-      <h1>{details.address}</h1>
-      <LocationCard cardDetails={details.parts[activeStep]} />
-      <DotsMobileStepper
-        activeStep={activeStep}
-        setActiveStep={setActiveStep}
-        size={details.parts ? details.parts.length : 0}
-      />
+      {!loading ? (
+        <>
+          <h1 className='location-title'>{details.name}</h1>
+          <h2 className='address'>{details.addr}</h2>
+          <div className='card_container'>
+            <LocationCard cardDetails={details.parts[activeStep]} />
+            <DotsMobileStepper
+              activeStep={activeStep}
+              setActiveStep={setActiveStep}
+              size={details.parts ? details.parts.length : 0}
+            />
+          </div>
+        </>
+      ) : null}
     </>
   );
 };
