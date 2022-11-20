@@ -20,7 +20,7 @@ if (con == null) createCon()
 app.use(express.json());
 
 app.get('/locations/', async (req, res) => {
-    let query = "SELECT lat, lon FROM location"
+    let query = "SELECT lat, lon FROM Location"
 
     con.query(query, (err, result) => {
       if (err) throw err;
