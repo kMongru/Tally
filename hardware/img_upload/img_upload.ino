@@ -98,6 +98,7 @@ HTTPClient https;
 #define PCLK_GPIO_NUM     22
 
 const int timerInterval = 30000;    // time between each HTTP POST image
+
 unsigned long previousMillis = 0;   // last time image was sent
 
 void setup() {
