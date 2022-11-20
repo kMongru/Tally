@@ -1,24 +1,31 @@
+import React, { useState, createContext } from 'react';
+import Header from './components/header/Header';
+import SimpleMap from './components/map/SimpleMap';
+import Dashboard from './components/dashboard/Dashboard';
 import './App.css';
+import LocationContext from './context/location_context';
 
-function App() {
+const App = () => {
+  const [lat, setLat] = useState(1);
+  const [lng, setLng] = useState(1);
+  const value = { lat, setLat, lng, setLng };
+
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>Look at our cool website!</p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <LocationContext.Provider value={value}>
+        <Header />
+        <div style={{ display: 'flex', flexDirection: 'row', height: '80%' }}>
+          <div className='centered-flex'>
+            <SimpleMap />
+          </div>
+          <div style={{ marginLeft: '3rem' }}>
+            <h1>DashBoard</h1>
+            <Dashboard />
+          </div>
+        </div>
+      </LocationContext.Provider>
+    </>
   );
-}
+};
 
 export default App;
