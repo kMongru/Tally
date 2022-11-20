@@ -40,7 +40,12 @@ const SimpleMap = ({ locations }) => {
             {isLoaded
               ? locationsArr &&
                 locationsArr.map((location) => (
-                  <Marker lat={location.lat} lng={location.lon} />
+                  <Marker
+                    lat={location.lat}
+                    lng={location.lon}
+                    prop_lat={location.lat}
+                    prop_lng={location.lon}
+                  />
                 ))
               : null}
           </GoogleMapReact>

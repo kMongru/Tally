@@ -24,12 +24,12 @@ const App = () => {
   }, [lat]);
 
   const populateMarkers = async () => {
-    const res = await axios.get('');
+    const res = await axios.get('/locations');
     setMarkerLocations(res.data);
   };
 
   const fetchLocationData = async () => {
-    const res = await axios.get('');
+    const res = await axios.get('/search');
     setLocationDetails(res.data);
   };
 
