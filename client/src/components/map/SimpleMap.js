@@ -13,15 +13,14 @@ const Wrapper = styled.main`
   z-index: 2;
 `;
 
-const SimpleMap = () => {
-  const locations = [[43.01885, -81.21563]];
+const SimpleMap = ({ locations }) => {
   const [isLoaded, setLoaded] = useState(false);
+  const [locationsArr, setLocationArr] = useState(locations);
 
+  // location array to population the markers
   useEffect(() => {
     setLoaded(true);
   }, []);
-
-  const handleApiLoaded = (map, maps) => {};
 
   return (
     <>
@@ -37,10 +36,13 @@ const SimpleMap = () => {
             }}
             defaultZoom={12}
             defaultCenter={[42.984924, -81.245277]}
-            // yesIWantToUseGoogleMapApiInternals
-            // onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
           >
-            {isLoaded ? <Marker lat={42.984924} lng={-81.245277} /> : null}
+            {isLoaded
+              ? locationsArr &&
+                locationsArr.map((location) => (
+                  <Marker lat={location.lat} lng={location.lon} />
+                ))
+              : null}
           </GoogleMapReact>
         </Wrapper>
       </Paper>
