@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import GoogleMapReact from 'google-map-react';
 import Marker from '../marker/Marker';
@@ -13,10 +13,14 @@ const Wrapper = styled.main`
   z-index: 2;
 `;
 
-const SimpleMap = () => {
-  const locations = [[43.01885, -81.21563]];
+const SimpleMap = ({ locations }) => {
+  const [isLoaded, setLoaded] = useState(false);
+  const [locationsArr, setLocationArr] = useState(locations);
 
-  // const handleApiLoaded = (map, maps) => {};
+  // location array to population the markers
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
 
   return (
     <>
@@ -32,14 +36,13 @@ const SimpleMap = () => {
             }}
             defaultZoom={12}
             defaultCenter={[42.984924, -81.245277]}
-            // yesIWantToUseGoogleMapApiInternals
-            // onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
           >
-            <Marker lat={42.01885} lng={-80.21563} />;
-            {/* {locations &&
-              locations.map((loc) => {
-                
-              })} */}
+            {isLoaded
+              ? locationsArr &&
+                locationsArr.map((location) => (
+                  <Marker lat={location.lat} lng={location.lon} />
+                ))
+              : null}
           </GoogleMapReact>
         </Wrapper>
       </Paper>

@@ -1,8 +1,8 @@
 import React, { createContext } from 'react';
 
 const LocationContext = createContext({
-  lat: 0,
-  lng: 0,
+  lat: null,
+  lng: null,
 });
 
 export default LocationContext;
