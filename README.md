@@ -43,7 +43,7 @@ We additionally connected the backend to the frontend using custom REST endpoint
 
 ### Frontend
 
-The frontend was built with a 
+The frontend was built with React.
 
 ![Front-end](https://i.ibb.co/2tv51Vt/315533153-543605657603788-6425096017957259078-n.png)
 
